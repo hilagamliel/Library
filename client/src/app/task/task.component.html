@@ -1,0 +1,28 @@
+
+        <!-- עוד דרך מיורקת -->
+        
+<p [class.CblueFount]="myname">task works!</p>
+<!-- <p [class.CblueFount]="funcname()">task works!</p> -->
+
+<h1>הבוחן של:{{myname}}</h1>
+<div id="horaa">ההוראות:{{Horaot}}</div>
+<p>הציון הסופי:{{finalMark()}}</p>
+
+<!-- עוד שני דרכים מיורקות -->
+
+<input [class.Cred]="!funcname()" type="text" placeholder="{{myplaceolder}}" [(ngModel)]="myname"/>
+<!-- <input [style.backgroundColor]="color"   [class.Cred]="!myname" type="text" placeholder="{{myplaceolder}}" [(ngModel)]="myname"/> -->
+<!-- <input [class.Cred]="!myname" type="text" placeholder="{{myplaceolder}}" [(ngModel)]="myname"/> -->
+
+<p *ngIf="!myname">הכנס שמך</p>
+
+<button (click)="Click()"></button>
+
+<p *ngFor = "let q of Queschense; let i=index" >
+    שאלה היא :{{q+" "+i}}
+</p>
+<div [ngSwitch] =finalMark() >
+<p *ngSwitchCase =100>ציון מקסימלי </p>
+<p *ngSwitchCase = 0>ציון מינימלי</p>
+<p *ngSwitchDefault>ציון ביניים </p> 
+</div>

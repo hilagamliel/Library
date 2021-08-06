@@ -1,0 +1,17 @@
+<div class="container">
+    <div class="row size" *ngFor="let Lend of AllLandings" class="size">
+        <mat-card class="example-card size" [class.dateColorpink]="!Lend.returnDate"
+            [class.dateColorblue]="Lend.returnDate">
+
+            <mat-card-title>Id: {{Lend.id}}</mat-card-title>
+                <p>Name: {{Lend.borroweLastname}} {{Lend.borroweFirstname}}</p>
+                <p>Landing Date: {{Lend.landingDate | date: 'EEEE, MMMM d, y'}}</p>
+                <div>return Date: {{Lend.returnDate  | date: 'EEEE, MMMM d, y'}}
+                    <h2 *ngIf="!Lend.returnDate && Lend.landingDate && IsTrueReturn(Lend.landingDate)">
+                        חובה להחזיר בהקדם</h2>
+                </div>
+
+        </mat-card>
+
+    </div>
+</div>

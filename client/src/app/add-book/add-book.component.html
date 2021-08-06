@@ -1,0 +1,36 @@
+<form #myForm="ngForm" (ngSubmit)="SubmitAdd()" class="example-form place">
+    <mat-form-field class="width">
+        <input matInput placeholder="Title" name="title" required [(ngModel)]="book.title" #title="ngModel">
+        <b *ngIf="!title.valid" style="color: black">חובה למלא את השם</b>
+        <mat-icon matSuffix tooltip="You can enter your...">picture_in_picture</mat-icon>
+    </mat-form-field>
+    <mat-form-field class="width">
+        <input matInput placeholder="Outher" name="author" required [(ngModel)]="book.author" #author="ngModel">
+        <b *ngIf="!author.valid" style="color: black">חובה למלא את התאור</b>
+        <mat-icon matSuffix tooltip="You can enter your..."> border_color</mat-icon>
+    </mat-form-field>
+    <p>
+        <mat-form-field class="width">
+            <input matInput placeholder="Summary" name="summary" required [(ngModel)]="book.summary" #summary="ngModel">
+            <b *ngIf="!summary.valid" style="color: black">חובה למלא את פירוט</b>
+            <mat-icon matSuffix tooltip="You can enter your...">event_note</mat-icon>
+        </mat-form-field>
+        <mat-form-field class="width">
+            <input matInput placeholder="Page Count" min="0" type="number" name="pageCount" required
+                [(ngModel)]="book.pageCount" #pageCount="ngModel">
+            <b *ngIf="!pageCount.valid" style="color: black">חובה למלא את כמות העמודים</b>
+            <mat-icon matSuffix tooltip="You can enter your...">picture_in_picture</mat-icon>
+        </mat-form-field>
+    </p>
+    <mat-form-field class="width">
+        <mat-select name="ageCategory" value="0" requierd [(ngModel)]="book.ageCategory" #ageCategory="ngModel">
+            <mat-option *ngFor="let category of categories" [value]="category.id"
+                [style.backgroundColor]="category.color">
+                {{category.name}}
+            </mat-option>
+        </mat-select>
+        <mat-icon matSuffix tooltip="You can enter your...">apps</mat-icon>
+    </mat-form-field>
+    <!-- <b *ngIf="!myForm.valid">חובה למלא את כל הפרטים</b> -->
+    <button mat-raised-button class="width"color="accent" type="submit" [disabled]="!myForm.valid">Add</button>
+</form>

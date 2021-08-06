@@ -1,0 +1,25 @@
+
+
+<button mat-button [matTooltip]="'Borrowers List'" routerLink="borroweList" routerLinkActive="active">Borrowers</button>
+
+
+<button mat-button  [matTooltip]="'Books List'"  routerLink="bookList" routerLinkActive="active">Books</button>
+
+
+<button mat-button  [matTooltip]="'Lend List'" routerLink="lendings" routerLinkActive="active">Lendings</button>
+
+
+<button mat-button [matTooltip]="'About'"   [matMenuTriggerFor]="beforeMenu"  routerLinkActive="active">About</button>
+<mat-menu #beforeMenu="matMenu" xPosition="before">
+        <button mat-menu-item routerLink="about/generalinformation" routerLinkActive="active">מידע כללי</button>
+        <button mat-menu-item routerLink="about/rulesandprocedures" routerLinkActive="active">תקנון ונהלים</button>
+        <button mat-menu-item routerLink="about/contactinformation" routerLinkActive="active">פרטים ליצירת קשר</button>
+    </mat-menu>
+
+
+<button mat-button [matMenuTriggerFor]="afterMenu"[matTooltip]="'Managment'"   routerLinkActive="active">Managment</button>
+<mat-menu #afterMenu="matMenu" xPosition="after">
+    <button mat-menu-item routerLink="management/formborrower" routerLinkActive="active">Add Borrower</button>
+    <button mat-menu-item routerLink="management/AddBook" routerLinkActive="active">Add Book</button>
+    <button mat-menu-item routerLink="management/formAddland" routerLinkActive="active">Add Lend</button>
+</mat-menu>

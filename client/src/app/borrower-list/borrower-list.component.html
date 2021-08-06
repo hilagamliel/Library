@@ -1,0 +1,63 @@
+<!-- <mat-slide-toggle type="checkbox" [(ngModel)]="IfShow">New</mat-slide-toggle>
+
+<app-borrower-forms [IfClear]="IfShow" *ngIf="IfShow" (IfClearUpdate)="SetIfShow($event)"></app-borrower-forms>
+
+<mat-list>
+        <div *ngFor="let borrower of borrowerList">
+                <mat-list-item>
+                        <p>Id: {{borrower.id}}</p>
+                        <p>Tz: {{borrower.tz}}</p>
+                        <p *ngIf="borrower.firstName">{{borrower.firstName | shortName}} : Name </p>
+                        <p>{{borrower.firstName | shortName}} {{borrower.lastName}} : Name </p>
+                        <p *ngIf="!borrower.mail">{{borrower.phoneNumber}}: Phone Number</p>
+                        <a href="mailto:{{borrower.mail}}?subject=Feedbac&body= {{borrower.firstName}}  יקר , שלום "
+                                *ngIf="borrower.mail">
+                                Send Feedback
+                        </a>
+
+                </mat-list-item>
+                <mat-divider></mat-divider>
+
+        </div>
+</mat-list> -->
+<mat-slide-toggle type="checkbox" [(ngModel)]="IfShow">New</mat-slide-toggle>
+
+<app-borrower-forms [IfClear]="IfShow" *ngIf="IfShow" (IfClearUpdate)="SetIfShow($event)"></app-borrower-forms>
+
+<table mat-table [dataSource]="borrowerList" class="mat-elevation-z8">
+        <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef>Id </th>
+                <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+        </ng-container>
+        <ng-container matColumnDef="tz">
+                <th mat-header-cell *matHeaderCellDef>Tz </th>
+                <td mat-cell *matCellDef="let element"> {{element.tz}} </td>
+        </ng-container>
+        <ng-container matColumnDef="firstName">
+                <th mat-header-cell *matHeaderCellDef>FirstName </th>
+                <td mat-cell *matCellDef="let element">
+                        <p *ngIf="element.firstName">{{element.firstName | shortName}}</p>
+                </td>
+        </ng-container>
+        <ng-container matColumnDef="lastName">
+                <th mat-header-cell *matHeaderCellDef>LastName </th>
+                <td mat-cell *matCellDef="let element">{{element.firstName | shortName}} {{element.lastName}}</td>
+        </ng-container>
+        <ng-container matColumnDef="phoneNumber">
+                <th mat-header-cell *matHeaderCellDef>PhoneNumber </th>
+                <td mat-cell *matCellDef="let element">
+                        <p *ngIf="!element.mail">{{element.phoneNumber}}
+                        </p>
+                </td>
+        </ng-container>
+        <ng-container matColumnDef="mail">
+                <th mat-header-cell *matHeaderCellDef>PhoneNumber </th>
+                <td mat-cell *matCellDef="let element">
+                        <a href="mailto:{{element.mail}}?subject=Feedbac&body= {{element.firstName}}  יקר , שלום "
+                                *ngIf="element.mail">
+                                Send Feedback
+                        </a> </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

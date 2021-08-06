@@ -1,0 +1,10 @@
+.div1{
+ display: inline-block;
+ margin-right: 10vw;   
+}
+.mat-card[_ngcontent-ibn-c48] {
+    width: 23vw;
+    /* top: 10vh; */
+    left: 14%;
+    position: relative;
+}

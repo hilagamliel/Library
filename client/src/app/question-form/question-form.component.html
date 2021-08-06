@@ -1,0 +1,46 @@
+<form [formGroup]="myForm" (ngSubmit)="SubmitAdd()" class="example-form place">
+    <p>
+        <mat-form-field class="width">
+            <label>Choose Borrower</label>
+            <mat-select formControlName="SelectAsks">
+                <mat-option *ngFor="let borrower of borrowers" [value]="borrower.id">
+                    {{borrower.firstName}} {{borrower.lastName}} {{borrower.tz}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </p>
+    <p>
+        <mat-form-field class="width">
+            <label>Choose Book</label>
+            <mat-select formControlName="SelectBook">
+
+                <mat-option *ngFor="let book of books" [value]="book.id">
+                    {{book.title}} {{book.id}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </p>
+
+    <button type="submit" class="width" mat-raised-button color="accent" [disabled]="!myForm.valid" >Add</button>
+
+    <!-- <label>Choose Borrower : </label>
+    <mat-select formControlName="SelectAsks">
+
+        <mat-option *ngFor="let borrower of borrowers" [value]="borrower.tz">
+            {{borrower.firstName}} {{borrower.lastName}} {{borrower.tz}}
+        </mat-option>
+    </mat-select>
+
+    <br>
+    <label>Choose Book : </label>
+
+    <mat-select formControlName="SelectBook">
+
+        <mat-option *ngFor="let book of books" [value]="book.id">
+            {{book.title}} {{book.id}}
+        </mat-option>
+    </mat-select>
+
+    <br>
+    <input type="submit" value="הוסף השאלה" [disabled]="!myForm.valid" /> -->
+</form>

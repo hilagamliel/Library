@@ -1,0 +1,57 @@
+<button mat-button routerLinkActive="active" routerLink="/bookList" [class.AllBooks]="true">
+    All Books
+</button>
+<br>
+<app-category-list></app-category-list>
+<br>
+
+<mat-form-field class="example-form-field">
+
+    <input matInput type="email" [(ngModel)]="textSearch">
+    <button mat-button *ngIf="textSearch" matSuffix mat-icon-button aria-label="Clear" (click)="textSearch=''">
+        <mat-icon>close</mat-icon>
+    </button>
+    <mat-icon matSuffix tooltip="You can enter your...">search</mat-icon>
+</mat-form-field>
+<table mat-table [dataSource]="bookList | searchBook : textSearch" class="mat-elevation-z8">
+    <ng-container matColumnDef="detiles">
+        <th mat-header-cell *matHeaderCellDef>#</th>
+        <td mat-cell *matCellDef="let element">
+            <ng-template #content let-c="close" let-d="dismiss">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="modal-basic-title">Book Detiles</h4>
+                    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <router-outlet></router-outlet>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">Close</button>
+                </div>
+            </ng-template>
+
+            <button class="btn btn-sm btn-info" routerLink="bookDetailsComponent/{{element.id}}"
+                routerLinkActive="active" (click)="open(content)">Book Detiles</button>
+        </td>
+    </ng-container>
+    <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef>Id </th>
+        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="title">
+        <th mat-header-cell *matHeaderCellDef>Title </th>
+        <td mat-cell *matCellDef="let element"> {{element.title}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="author">
+        <th mat-header-cell *matHeaderCellDef>Author </th>
+        <td mat-cell *matCellDef="let element"> {{element.author}} </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+<p *ngIf="(bookList | searchBook : textSearch).length==0">אין ספרים ברשימה</p>
+<p *ngIf="!((bookList | searchBook : textSearch).length==0)">{{(bookList | searchBook : textSearch).length}} : ספרים

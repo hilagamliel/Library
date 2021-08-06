@@ -1,0 +1,11 @@
+.mat-grid-list {
+    display: block;
+    position: relative;
+    top: 13vh;
+}table.mat-table {
+    border-spacing: 0;
+    width: 81%;
+    position: relative;
+    left: 10vw;
+    top: 9vh;
+}

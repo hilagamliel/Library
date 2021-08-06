@@ -1,0 +1,22 @@
+export class Lend {
+    id:string;
+    borrowerid:string;
+    borroweFirstname:string;
+    borroweLastname:string;
+    bookid:string;
+    bookTitle:string;
+    landingDate:Date;
+    returnDate:Date;
+    constructor(id?:string,borrowerid?:string,borroweFirstname?:string,borroweLastname?:string,bookid?:string,bookTitle?:string,
+        landingDate?:Date,returnDate?:Date)
+        {
+            this.id=id;
+            this.borrowerid=borrowerid;
+            this.borroweFirstname=borroweFirstname;
+            this.borroweLastname=borroweLastname;
+            this.bookid=bookid;
+            this.bookTitle=bookTitle;
+            this.landingDate=landingDate;
+            this.returnDate=returnDate;
+        }
+}

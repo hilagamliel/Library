@@ -1,0 +1,18 @@
+.mat-select-placeholder {
+    background-color: red;
+    color: black;
+}.mat-form-field {
+    display: inline-block;
+    position: relative;
+    text-align: left;
+    width: 22vw;
+}.place{
+    position: relative;
+    top: 7vh;
+    left: 15vw;
+    direction: rtl;
+    width: 43vw;
+}.width{
+    width: 100%;
+    direction: rtl;
+}

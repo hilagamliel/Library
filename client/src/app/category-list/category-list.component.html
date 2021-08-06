@@ -1,0 +1,5 @@
+<div *ngFor="let c of category" >
+        <button mat-button routerLinkActive="active" routerLink="/bookList/{{c.id}}">
+                <app-show-category-parent [ParentName]="c"></app-show-category-parent>
+        </button>
+</div>

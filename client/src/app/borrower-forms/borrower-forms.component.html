@@ -1,0 +1,40 @@
+<form [formGroup]="myForm" (ngSubmit)="SubmitAdd()" class="example-form place">
+    <mat-form-field class="width">
+        <input matInput placeholder="First Name" formControlName="firstName" [class.PutRed]="myForm.controls.firstName.touched==true&&
+        myForm.controls.firstName.status=='INVALID'">
+        <mat-icon matSuffix tooltip="You can enter your...">person</mat-icon>
+    </mat-form-field>
+    <mat-form-field class="width">
+        <input matInput placeholder="Last Name" formControlName="lastName">
+        <mat-icon matSuffix tooltip="You can enter your...">person</mat-icon>
+    </mat-form-field>
+    <mat-form-field class="width">
+        <input matInput placeholder="PhoneNumber" formControlName="phoneNumber">
+        <mat-icon matSuffix tooltip="You can enter your...">contact_phone</mat-icon>
+    </mat-form-field>
+    <p>
+        <mat-form-field class="width">
+            <input matInput type="email" matInput placeholder="Email" formControlName="mail">
+            <mat-icon matSuffix tooltip="You can enter your...">email</mat-icon>
+        </mat-form-field>
+        <mat-form-field class="width">
+            <input matInput placeholder="Tz" formControlName="tz" [class.PutRed]="myForm.controls.tz.touched==true&&
+            myForm.controls.tz.status=='INVALID'">
+            <mat-icon matSuffix tooltip="You can enter your...">person_add</mat-icon>
+        </mat-form-field>
+    </p>
+    <mat-form-field class="width">
+        <mat-select formControlName="ageCategory" [class.PutRed]="myForm.controls.ageCategory.touched==true&&
+                myForm.controls.ageCategory.status=='INVALID'">
+
+            <mat-option *ngFor="let category of allCategory" [style.backgroundColor]="category.color"
+                [value]="category.id">
+                {{category.name}}</mat-option>
+        </mat-select>
+        <mat-icon matSuffix tooltip="You can enter your...">apps</mat-icon>
+    </mat-form-field>
+    <div class="width">
+        <button mat-raised-button type="submit"class="width2"color="accent" [disabled]="!myForm.valid">Add</button>
+        <button mat-raised-button type="button" class="width2"color="accent" (click)="ReasetBorrower()">Clean</button>
+    </div>
+</form>
